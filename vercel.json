@@ -5,14 +5,4 @@
             "destination": "/$1"
         }
     ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "headers": {
-                "Content-Type": "text/html; charset=utf-8"
-            },
-            "status": 200,
-            "continue": true
-        }
-    ]
 }
