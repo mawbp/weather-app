@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,24 +11,24 @@
     <label for="wilayah">Pilih Kota</label>
     <select name="wilayah" id="wilayah">
       <?php
-        $data = new SimpleXMLElement('http://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-Indonesia.xml', 0, true);
-        $kota = array();
-        $kode = array();
-        foreach($data->forecast->area as $area) {
-          $nama = $area['description'];
-          $id = $area['id'];
-          $kota[] = (string)$nama;
-          $kode[] = (string)$id;
-        }
-        $lengkap = array_combine($kota, $kode);
-        $count = count($kota);
-        sort($kota);
+        // $data = new SimpleXMLElement('http://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-Indonesia.xml', 0, true);
+        // $kota = array();
+        // $kode = array();
+        // foreach($data->forecast->area as $area) {
+        //   $nama = $area['description'];
+        //   $id = $area['id'];
+        //   $kota[] = (string)$nama;
+        //   $kode[] = (string)$id;
+        // }
+        // $lengkap = array_combine($kota, $kode);
+        // $count = count($kota);
+        // sort($kota);
 
-        for($i = 0; $i < $count; $i++) {
-          $namkot = $kota[$i];
-          $dekot = $lengkap[$namkot];
-          echo "<option value= '" . $dekot . "'>" . $namkot . "</option>";
-        }
+        // for($i = 0; $i < $count; $i++) {
+        //   $namkot = $kota[$i];
+        //   $dekot = $lengkap[$namkot];
+        //   echo "<option value= '" . $dekot . "'>" . $namkot . "</option>";
+        // }
       ?>
     </select>
     <button type="submit">Tampilkan</button>
@@ -83,5 +83,55 @@
     </div>
   </form>
   <script src="prov.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pilih Wilayah</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container py-5">
+    <h2>Pilih Wilayah</h2>
+
+    <div class="mb-3">
+      <label for="provinsi" class="form-label">Provinsi</label>
+      <select id="provinsi" class="form-select">
+        <option selected disabled value="">Memuat provinsi...</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="kota" class="form-label">Kota/Kabupaten</label>
+      <select id="kota" class="form-select" disabled>
+        <option selected disabled value="">Pilih provinsi dulu</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="kecamatan" class="form-label">Kecamatan</label>
+      <select id="kecamatan" class="form-select" disabled>
+        <option selected disabled value="">Pilih kabupaten / kota dulu</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="desa" class="form-label">Desa</label>
+      <select id="desa" class="form-select" disabled>
+        <option selected disabled value="">Pilih kecamatan dulu</option>
+      </select>
+    </div>
+
+    <div class="mb-3 text-end">
+      <button id="btnCekCuaca" class="btn btn-primary" disabled>Cek Cuaca</button>
+    </div>
+
+    <div id="cuaca" class="mt-4"></div>
+  </div>
+
+  <script src="lokasi/get_lokasi.js"></script>
 </body>
 </html>
